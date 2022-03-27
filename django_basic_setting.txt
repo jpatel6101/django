@@ -1,0 +1,70 @@
+django startup task necessary
+
+====================================
+
+after virtual env installed 
+
+
+install in root directory virtualenv
+
+
+$ pip install django-crispy-forms
+
+$ pip install crispy-bootstrap5
+
+===================================
+
+1. create static & templates 2 folders in the root of the project directory where manage.py is
+
+2. in settings.py add/change follwing and save it
+	
+	import os
+
+	INSTALLED_APPS = [
+		...,
+
+		'myapp',
+		'crispy_forms',
+		'crispy_bootstrap5',
+	]
+
+	TEMPLATES = [
+		DIRS = [os.path.join(BASE_DIR, 'templates'),]
+	]
+
+-----at the bottom of settings.py page ---------
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+=========================================
+
+==== In HTML File====
+
+after extend statement
+
+{% load crispy_forms_tags %}
+
+<form>
+
+{{ form | crispy }}
+
+</form>
+
+========================================
+
+PUBLIC ACCESS ON SAME NW
+	
+1. in settings.py add PC-ip address to the allowed list
+	ALLOWED_HOSTS = [
+		'localhost',
+		'ip of the pc',
+	]
+
+2. python manage.py runserver 0.0.0.0:8000
+
+3. from another pc or phone on same network open browser
+	http://ip-of-the-pc:8000

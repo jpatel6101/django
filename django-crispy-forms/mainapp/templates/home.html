@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title></title>
+</head>
+<body>
+
+<div class="container mt-5">
+     {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+
+{% load crispy_forms_tags %}
+
+<div class="container-xl mt-5"
+     style="background-color: #F5F5F5">
+
+    <h3 class="pt-3 text-center">Person Home Page</h3>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form | crispy }}
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

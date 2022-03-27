@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title></title>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h3> This is Home Page</h3>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label class="form-label" for="{{ form.firstname.id_for_label }}">First Name</label>
+            {{ form.firstname}}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="{{ form.lastname.id_for_label }}">Last Name</label>
+            {{ form.lastname}}
+        </div>
+
+        <div class="mb-3">
+            {{ form.fage.errors }}
+            <label class="form-label" for="{{ form.fage.id_for_label }}">Age</label>
+            {{ form.fage}}
+        </div>
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
